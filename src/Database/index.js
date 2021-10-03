@@ -6,8 +6,8 @@ async function setupModels(db) {
     Tag.init(db);
 }
 
-async function setupSequelize(config) {
-    return new Sequelize(config);
+async function setupSequelize(cfg) {
+    return new Sequelize(cfg);
 }
 
 async function configure(auth, db) {
