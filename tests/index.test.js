@@ -1,5 +1,7 @@
-const showMessage = require('../app/index.js');
+const app = require("../src/index");
 
-test('Successful Message', () => {
-  expect(showMessage("Success!")).toBe("Message: Success!");
+describe("Main tests", () => {
+    it("Check if we have express defined", async () => {
+        expect(app).toBeDefined();
+    });
 });
