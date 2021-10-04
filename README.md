@@ -74,3 +74,23 @@ Para criar uma nova tag, envie os dados nesse formato:
     "color": "#ff00aa"
 }
 ```
+
+**GET: `/tags/all`**
+
+Para listar todas as tags existentes, envie uma requisição para este endpoint
+Os dados recebidos estarão nesse formato:
+
+```json
+[
+    {
+        "id": 1,
+        "name": "tag one",
+        "color": "#ff00bb"
+    },
+    {
+        "id": 3,
+        "name": "tag two",
+        "color": "#ff00ba"
+    }
+]
+```
