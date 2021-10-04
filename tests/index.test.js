@@ -30,4 +30,9 @@ describe("Main tests", () => {
         const res = await request(app).post("/tags").send(validTag2);
         expect(res.statusCode).toEqual(500);
     });
+
+    it("GET /tags/all - should return all registered tags", async () => {
+        const res = await request(app).get("/tags/all");
+        expect(res.statusCode).toEqual(200);
+    });
 });
