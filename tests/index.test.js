@@ -46,4 +46,13 @@ describe("Main tests", () => {
 
         expect(res.statusCode).toEqual(200);
     });
+
+    it("POST /tags/500 - should not edit a inexistent tag", async () => {
+        const tagId = 500;
+        const res = await request(app)
+            .post(`/tags/${tagId}`)
+            .send({ name: "new name", color: "new color" });
+
+        expect(res.statusCode).toEqual(400);
+    });
 });
