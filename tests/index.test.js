@@ -13,6 +13,8 @@ const validTag2 = {
 };
 
 describe("Main tests", () => {
+    let someTagId = 0;
+
     beforeAll(async () => {
         await initializeDatabase();
     });
@@ -24,6 +26,7 @@ describe("Main tests", () => {
     it("POST /tags - should create a tag", async () => {
         const res = await request(app).post("/tags").send(validTag1);
         expect(res.statusCode).toEqual(200);
+        someTagId = res.body.id;
     });
 
     it("POST /tags - should not create a tag with same color", async () => {
@@ -34,5 +37,22 @@ describe("Main tests", () => {
     it("GET /tags/all - should return all registered tags", async () => {
         const res = await request(app).get("/tags/all");
         expect(res.statusCode).toEqual(200);
+    });
+
+    it("POST /tags/:id - should edit the specified tag", async () => {
+        const res = await request(app)
+            .post(`/tags/${someTagId}`)
+            .send({ name: "new name", color: "new color" });
+
+        expect(res.statusCode).toEqual(200);
+    });
+
+    it("POST /tags/500 - should not edit a inexistent tag", async () => {
+        const tagId = 500;
+        const res = await request(app)
+            .post(`/tags/${tagId}`)
+            .send({ name: "new name", color: "new color" });
+
+        expect(res.statusCode).toEqual(400);
     });
 });

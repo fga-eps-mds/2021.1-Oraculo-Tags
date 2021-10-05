@@ -94,3 +94,13 @@ Os dados recebidos estarão nesse formato:
     }
 ]
 ```
+
+**POST: `/tags/:id`**
+
+Para editar uma tag específica, envie uma requisição contendo os seguintes
+dados no corpo:
+
+```json
+    "name": "nome novo da tag"
+    "color": "cor nova da tag"
+```
