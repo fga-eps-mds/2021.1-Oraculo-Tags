@@ -11,4 +11,13 @@ async function createTag(req, res) {
     }
 }
 
-module.exports = { createTag };
+async function listTags(req, res) {
+    try {
+        const tags = await Tag.findAll({ attributes: ["id", "name", "color"] });
+        return res.status(200).json(tags);
+    } catch (err) {
+        return res.status(500).json({ error: "could not list all tags" });
+    }
+}
+
+module.exports = { createTag, listTags };
