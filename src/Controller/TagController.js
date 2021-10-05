@@ -20,4 +20,21 @@ async function listTags(req, res) {
     }
 }
 
-module.exports = { createTag, listTags };
+async function editTag(req, res) {
+    const { id } = req.params;
+    const { name, color } = req.body;
+
+    const existingTag = await Tag.findByPk(id);
+    if (!existingTag) {
+        return res.status(400).json({ error: "could not find the specified tag" });
+    }
+
+    const editedTag = await existingTag.update({ name, color });
+    if (!editedTag) {
+        return res.status(500).json({ error: "could not edit the specified tag" });
+    }
+
+    return res.status(200).json({ message: "the tag has been edited" });
+}
+
+module.exports = { createTag, listTags, editTag };
