@@ -10,7 +10,7 @@ env.config();
 const { APP_PORT } = process.env;
 
 const corsOptions = {
-    origin: "localhost",
+  origin: "http://localhost:3000",
 };
 
 app.use(cors(corsOptions));
@@ -21,7 +21,7 @@ app.disable("x-powered-by");
 app.listen(APP_PORT);
 
 initializeDatabase().then(() => {
-    console.info("connected to database");
+  console.info("connected to database");
 });
 
 module.exports = app;
