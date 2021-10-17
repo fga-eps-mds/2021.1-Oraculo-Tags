@@ -20,21 +20,21 @@ A documentação do projeto pode ser acessada pelo nosso site em https://fga-eps
 Todas as funções adicionadas nessa API devem ser testadas, o repositŕorio aceita até 10% do total de linhas não testadas. Para rodar os testes nesse repositŕio deve ser executado o comando:
 
 ```bash
-docker-compose up -d --build
-npm install
-npx sequelize-cli db:migrate --config src/Database/config/config.json
-npx jest --coverage --forceExit
+yarn
+yarn run docker:up
+yarn run db:migrate
+yarn run test
 ```
 
 ## Como rodar?
 
 O arquivo .env possui configurações iniciais que podem ser alteradas de acordo com a necessidade. São elas:
 
--   SECRET: chave para criptografia das senhas
--   DB_USER: usuário de acesso ao banco de dados
--   DB_PASS: senha de acesso ao banco de dados
--   DB_NAME: nome da base de dados
--   DB_HOST: host da base de dados
+- SECRET: chave para criptografia das senhas
+- DB_USER: usuário de acesso ao banco de dados
+- DB_PASS: senha de acesso ao banco de dados
+- DB_NAME: nome da base de dados
+- DB_HOST: host da base de dados
 
 Veja o exemplo abaixo:
 
@@ -70,8 +70,8 @@ Para criar uma nova tag, envie os dados nesse formato:
 
 ```json
 {
-    "name": "Nome da tag",
-    "color": "#ff00aa"
+  "name": "Nome da tag",
+  "color": "#ff00aa"
 }
 ```
 
@@ -82,16 +82,16 @@ Os dados recebidos estarão nesse formato:
 
 ```json
 [
-    {
-        "id": 1,
-        "name": "tag one",
-        "color": "#ff00bb"
-    },
-    {
-        "id": 3,
-        "name": "tag two",
-        "color": "#ff00ba"
-    }
+  {
+    "id": 1,
+    "name": "tag one",
+    "color": "#ff00bb"
+  },
+  {
+    "id": 3,
+    "name": "tag two",
+    "color": "#ff00ba"
+  }
 ]
 ```
 
