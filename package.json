@@ -4,10 +4,11 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest --coverage --forceExit",
-    "db:migrate": "export DATABASE_URL=postgres://oraculo:oraculo123@localhost:5430/oraculo && npx sequelize db:migrate",
+    "test": "export DATABASE_URL=postgres://oraculo:oraculo123@localhost:5430/oraculo && jest --coverage --forceExit",
+    "db:migrate": "export DATABASE_URL=postgres://oraculo:oraculo123@localhost:5430/oraculo && sleep 3 && npx sequelize db:migrate",
     "docker:clean": "sudo docker container rm -f oraculo-banco-tags oraculo-tags oraculo-pgadmin-tags",
     "docker:up": "sudo docker-compose up -d --build",
+    "db:up": "sudo docker-compose up -d --build banco",
     "start": "node src/index.js",
     "start:prod": "node src/index.js"
   },
