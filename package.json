@@ -1,43 +1,47 @@
 {
-    "name": "2021.1-oraculo-tags",
-    "version": "1.0.0",
-    "description": "",
-    "main": "src/index.js",
-    "scripts": {
-        "test": "jest --coverage",
-        "start": "node src/index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/fga-eps-mds/2021.1-Oraculo-Tags.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/fga-eps-mds/2021.1-Oraculo-Tags/issues"
-    },
-    "homepage": "https://github.com/fga-eps-mds/2021.1-Oraculo-Tags#readme",
-    "devDependencies": {
-        "jest": "^27.1.1",
-        "jest-sonar-reporter": "^2.0.0"
-    },
-    "jest": {
-        "testEnvironment": "node",
-        "collectCoverage": true,
-        "testResultsProcessor": "jest-sonar-reporter",
-        "coveragePathIgnorePatterns": [
-            "/node_modules/",
-            "/test/"
-        ]
-    },
-    "dependencies": {
-        "cors": "^2.8.5",
-        "dotenv": "^10.0.0",
-        "express": "^4.17.1",
-        "morgan": "^1.10.0",
-        "pg": "^8.7.1",
-        "sequelize": "^6.6.5",
-        "sequelize-cli": "^6.2.0",
-        "supertest": "^6.1.6"
-    }
+  "name": "2021.1-oraculo-tags",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest --coverage --forceExit",
+    "db:migrate": "export DATABASE_URL=postgres://oraculo:oraculo123@localhost:5430/oraculo && npx sequelize db:migrate",
+    "docker:clean": "sudo docker container rm -f oraculo-banco-tags oraculo-tags oraculo-pgadmin-tags",
+    "docker:up": "sudo docker-compose up -d --build",
+    "start": "node src/index.js",
+    "start:prod": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fga-eps-mds/2021.1-Oraculo-Tags.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fga-eps-mds/2021.1-Oraculo-Tags/issues"
+  },
+  "homepage": "https://github.com/fga-eps-mds/2021.1-Oraculo-Tags#readme",
+  "devDependencies": {
+    "jest": "^27.1.1",
+    "jest-sonar-reporter": "^2.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "testResultsProcessor": "jest-sonar-reporter",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/"
+    ]
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.7.1",
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0",
+    "supertest": "^6.1.6"
+  }
 }
